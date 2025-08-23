@@ -1,0 +1,46 @@
+<!-- <div class="noticia-container" *ngIf="noticiaActual">
+  <article class="noticia-articulo">
+    <header class="noticia-header">
+      <div class="titulo-categoria">
+        <h1>{{ noticiaActual.titulo }}</h1>
+        <span class="categoria-tag">{{ noticiaActual.categoriaNombre }}</span>
+      </div>
+    </header>
+
+    <div class="noticia-imagen">
+      <img [src]="noticiaActual.noticiaActual" [alt]="noticiaActual.titulo">
+    </div>
+
+    <section class="noticia-contenido" [innerHTML]="noticiaActual.contenido"></section>
+  </article>
+
+  <section class="noticias-relacionadas">
+    <h2>Noticias Relacionadas</h2>
+    <app-noticias-carrusel [noticias]="noticiasRelacionadas"></app-noticias-carrusel>
+  </section> 
+</div> -->
+
+<div class="noticia-container" *ngIf="noticiaActual">
+  <article class="noticia-articulo">
+    <header class="noticia-header">
+      <div class="titulo-categoria">
+        <h1>{{ noticiaActual.titulo }}</h1>
+        <span class="categoria-tag">{{ noticiaActual.categoriaNombre }}</span>
+      </div>
+    </header>
+ 
+    <div class="noticia-imagen">
+      <img [src]="noticiaActual.url" [alt]="noticiaActual.titulo">
+    </div>  
+
+    <section class="noticia-contenido" [innerHTML]="noticiaActual.contenido"></section> 
+  </article>
+
+  <section class="noticias-relacionadas" *ngIf="noticiasRelacionadas.length > 0">
+    <h2>Noticias Relacionadas</h2>
+    <app-noticias-carrusel [noticias]="noticiasRelacionadas" ></app-noticias-carrusel>
+  </section>   
+</div>
+
+
+

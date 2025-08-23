@@ -1,0 +1,12 @@
+<div class="carrusel-container">
+  <div class="carrusel-track">
+    <div *ngFor="let noticia of noticias" class="carrusel-item">
+      <div class="noticia-card" (click)="irANoticia(noticia)">
+        <img [src]="noticia.url" alt="Imagen de {{ noticia.titulo }}">
+        <div class="noticia-card-content">
+          <h3>{{ noticia.titulo }}</h3>
+        </div>
+      </div>
+    </div>
+  </div>
+</div>
