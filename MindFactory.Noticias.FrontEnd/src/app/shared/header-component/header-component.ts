@@ -82,4 +82,20 @@ export class HeaderComponent implements OnInit, OnDestroy {
    this.router.navigate(['/noticias']);
   }
 
+  eliminarNoticia(){
+    if(this.noticiaId){
+      this.noticiaService.delete(this.noticiaId).subscribe({
+      next: () => {
+        console.log("me eliminaron");
+        this.notificacionService.success("Se elimino con exito la noticia");
+        this.router.navigate(['/noticias']);
+      },
+      error: (error) => {
+        this.notificacionService.error(error.error.Message);
+      }
+    });
+
+    }
+  }
+
 }

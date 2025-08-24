@@ -1,8 +1,11 @@
 <header class="header">
   <h1 class="title" (click)="irNoticias()" >Noticias</h1>
   <div class="header-actions">
-    <button  class="btn-nueva-noticia" (click)="abrirPopup()">
+    <button  class="btn-noticia" (click)="abrirPopup()">
       {{ isEditMode ? 'Editar Noticia' : 'Nueva Noticia' }}
+    </button>
+    <button  class="btn-noticia" (click)="eliminarNoticia()" *ngIf="isEditMode">
+      Eliminar Noticia
     </button>
   </div>
 </header>

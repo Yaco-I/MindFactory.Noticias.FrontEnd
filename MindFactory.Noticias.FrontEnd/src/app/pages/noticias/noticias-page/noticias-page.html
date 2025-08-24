@@ -1,1 +1,53 @@
-<p>noticias-page works!</p>
+<!-- <div>
+  <div class="noticia-container" *ngFor="let noticia of noticias">
+    <article class="noticia-articulo" (click)="irANoticia(noticia.id)">
+      <header class="noticia-header">
+        <div class="titulo-categoria">
+          <h1>{{ noticia.titulo }}</h1>
+          <span class="categoria-tag">{{ noticia.categoriaNombre }}</span>
+        </div>
+      </header>
+
+      <div class="noticia-imagen">
+        <img [src]="noticia.url" [alt]="noticia.titulo">
+      </div>  
+
+      <section class="noticia-contenido" [innerHTML]="noticia.contenido"></section> 
+    </article>
+  </div>
+</div> -->
+
+
+
+<div class="global-container" >
+  <div class="body-container" >
+    <div>
+
+      <div class="noticia-container" *ngFor="let noticia of noticias">
+        <article class="noticia-articulo" (click)="irANoticia(noticia.id)">
+          <header class="noticia-header">
+            <div class="titulo-categoria">
+              <h1>{{ noticia.titulo }}</h1>
+            <span class="categoria-tag">{{ noticia.categoriaNombre }}</span>
+          </div>
+        </header>
+        
+        <div class="noticia-imagen">
+          <img [src]="noticia.url" [alt]="noticia.titulo">
+        </div>
+        
+        <section class="noticia-contenido" [innerHTML]="noticia.resumen"></section> 
+      </article>
+    </div>
+  </div>
+    <div class="destacadas-container">
+      <section class="noticias-relacionadas" *ngIf="noticias.length > 0">
+        <h2>Noticias Destecadas</h2>
+        <app-noticias-carrusel [noticias]="noticias"></app-noticias-carrusel>
+      </section>
+    </div>
+  </div>
+
+
+  
+</div>

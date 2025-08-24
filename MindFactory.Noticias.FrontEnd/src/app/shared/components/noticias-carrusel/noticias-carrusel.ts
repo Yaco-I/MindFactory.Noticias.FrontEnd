@@ -12,7 +12,7 @@ import { Router } from '@angular/router';
 })
 export class NoticiasCarruselComponent {
   @Input() noticias: NoticiaDto[] = [];
-  
+  @Input() display: boolean = true;
   constructor(private router: Router) {}
 
   irANoticia(noticia: NoticiaDto) {

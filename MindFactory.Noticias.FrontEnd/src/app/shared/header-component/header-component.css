@@ -1,6 +1,6 @@
 .header {
   height: 4rem;
-  background-color: #950606; /* Un color de fondo para que se note la altura */
+  background-color: #950606; 
   color: white;
   display: flex;
   justify-content: space-between;
@@ -19,27 +19,30 @@
   align-items: center;
 }
 
-.btn-nueva-noticia {
+
+.btn-noticia {
   background-color: #007bff;
   color: white;
   border: none;
   padding: 0.6rem 1.2rem;
+  margin: 0.3rem;
   border-radius: 5px;
   cursor: pointer;
   font-size: 1rem;
   transition: background-color 0.3s ease;
 }
 
-.btn-nueva-noticia:hover {
+.btn-noticia:hover {
   background-color: #0056b3;
 }
 
-/* Responsive */
+
+
 @media (max-width: 768px) {
   .title {
     font-size: 1.2rem;
   }
-  .btn-nueva-noticia {
+  .btn-noticia {
     padding: 0.5rem 0.8rem;
     font-size: 0.9rem;
   }

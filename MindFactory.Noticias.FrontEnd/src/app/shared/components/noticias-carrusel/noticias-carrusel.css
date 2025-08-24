@@ -4,12 +4,33 @@
   padding-bottom: 1rem;
   scrollbar-width: thin;
   scrollbar-color: #ccc #f1f1f1;
+  max-height: 30rem;
+  display: flex;
 }
 
 .carrusel-track {
   display: flex;
   flex-wrap: nowrap;
   gap: 1.5rem; 
+  
+}
+
+.carrusel-conteiner-vertical {
+  justify-content: center;
+  align-items: flex-start;
+}
+
+.carrusel-conteiner-horizontal {
+  align-items: flex-start;
+  margin-left: 2.5rem;
+}
+
+.carrusel-track-column{
+  flex-direction: column;
+}
+
+.carrusel-track-row{
+  flex-direction: row;
 }
 
 .carrusel-item {

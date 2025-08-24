@@ -1,5 +1,5 @@
-<div class="carrusel-container">
-  <div class="carrusel-track">
+<div class="carrusel-container" [ngClass]="display ? 'carrusel-conteiner-vertical' : 'carrusel-conteiner-horizontal' "> 
+  <div class="carrusel-track" [ngClass]="display ? 'carrusel-track-column' : 'carrusel-track-row' ">
     <div *ngFor="let noticia of noticias" class="carrusel-item">
       <div class="noticia-card" (click)="irANoticia(noticia)">
         <img [src]="noticia.url" alt="Imagen de {{ noticia.titulo }}">

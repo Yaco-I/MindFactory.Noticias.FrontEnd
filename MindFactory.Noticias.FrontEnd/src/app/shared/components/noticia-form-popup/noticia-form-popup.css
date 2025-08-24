@@ -161,3 +161,25 @@ button {
     width: 100%;
   }
 }
+
+
+.full-width{
+  width: 100%;
+}
+
+/* Estilo general para el select */
+.form-group select {
+  width: 100%;       /* Se adapta al ancho del contenedor */
+  max-width: 100%;   /* No se pasa del ancho del contenedor */
+  box-sizing: border-box; /* Incluye padding y border dentro del ancho */
+  padding: 8px;
+  font-size: 16px;
+}
+
+/* Opcional: ajustar tamaño de fuente y padding en pantallas pequeñas */
+@media (max-width: 600px) {
+  .form-group select {
+    font-size: 14px;
+    padding: 6px;
+  }
+}

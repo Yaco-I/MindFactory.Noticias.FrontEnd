@@ -1,24 +1,34 @@
-<div class="noticia-container" *ngIf="noticiaActual">
-  <article class="noticia-articulo">
-    <header class="noticia-header">
-      <div class="titulo-categoria">
-        <h1>{{ noticiaActual.titulo }}</h1>
-        <span class="categoria-tag">{{ noticiaActual.categoriaNombre }}</span>
-      </div>
-    </header>
- 
-    <div class="noticia-imagen">
-      <img [src]="noticiaActual.url" [alt]="noticiaActual.titulo">
-    </div>  
+<div class="global-container">
+  <div class="body-container">
+    <div class="noticia-container" *ngIf="noticiaActual">
+      <article class="noticia-articulo">
+        <header class="noticia-header">
+          <div class="titulo-categoria">
+            <h1>{{ noticiaActual.titulo }}</h1>
+            <span class="categoria-tag">{{ noticiaActual.categoriaNombre }}</span>
+          </div>
+        </header>
 
-    <section class="noticia-contenido" [innerHTML]="noticiaActual.contenido"></section> 
-  </article>
+        <div class="noticia-imagen">
+          <img [src]="noticiaActual.url" [alt]="noticiaActual.titulo">
+        </div>
 
-  <section class="noticias-relacionadas" *ngIf="noticiasRelacionadas.length > 0">
-    <h2>Noticias Relacionadas</h2>
-    <app-noticias-carrusel [noticias]="noticiasRelacionadas" ></app-noticias-carrusel>
-  </section>   
+        <section class="noticia-contenido" [innerHTML]="noticiaActual.contenido"></section> 
+      </article>
+    </div>
+    <div class="destacadas-container">
+      <section class="noticias-relacionadas" *ngIf="noticiasRelacionadas.length > 0">
+        <h2>Noticias Destecadas</h2>
+        <app-noticias-carrusel [noticias]="noticiasRelacionadas"></app-noticias-carrusel>
+      </section>
+    </div>
+  </div>
+
+
+  <div class="app-container">
+    <section class="noticias-relacionadas" *ngIf="noticiasRelacionadas.length > 0">
+      <h2>Noticias Relacionadas</h2>
+      <app-noticias-carrusel [noticias]="noticiasRelacionadas" [display]="false" ></app-noticias-carrusel>
+    </section>
+  </div>
 </div>
-
-
-

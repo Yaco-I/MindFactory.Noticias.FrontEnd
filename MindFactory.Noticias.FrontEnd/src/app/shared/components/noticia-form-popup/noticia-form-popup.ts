@@ -7,10 +7,14 @@ import { CategoriaService } from '../../../services/categoria.service';
 import { NoticiaService } from '../../../services/noticia.service';
 import { CommonModule } from '@angular/common';
 import { NotificacionService } from '../../../services/notificacion.service';
+import { MatFormFieldModule } from '@angular/material/form-field';
+import { MatSelectModule } from '@angular/material/select';
 
 @Component({
   selector: 'app-noticia-form-popup',
-  imports: [ReactiveFormsModule, CommonModule],
+  imports: [ReactiveFormsModule, CommonModule,
+    MatFormFieldModule,
+    MatSelectModule],
   templateUrl: './noticia-form-popup.html',
   styleUrls: ['./noticia-form-popup.css']
 })
@@ -40,26 +44,26 @@ export class NoticiaFormPopupComponent implements OnInit {
       publicada: [true]
     });
 
-     }
+  }
 
   ngOnInit(): void {
     console.log('hola');
-    this.cargarNoticias(); 
+    this.cargarNoticias();
   }
-  
-  
-  cargarNoticias(){
+
+
+  cargarNoticias() {
     this.categoriaService.getAll().subscribe({
-        next: (data: CategoriaDto[]) => {
-          this.categorias = data;
-           if (this.noticia) {
-              this.noticiaForm.patchValue(this.noticia);
-            }
-        },
-        error: (err) => {
-          this.notificacionService.error('Error al cargar categorías', err);
+      next: (data: CategoriaDto[]) => {
+        this.categorias = data;
+        if (this.noticia) {
+          this.noticiaForm.patchValue(this.noticia);
         }
-      });
+      },
+      error: (err) => {
+        this.notificacionService.error('Error al cargar categorías', err);
+      }
+    });
 
   }
 
@@ -84,11 +88,8 @@ export class NoticiaFormPopupComponent implements OnInit {
         this.close.emit();
       },
       error: (error) => {
-        console.log(error.error.Message);
-        console.log('puto');
-        
+
         this.isLoading = false;
-        this.errorMessage = 'Ocurrió un error al guardar la noticia. Por favor, inténtelo de nuevo.';
         this.notificacionService.error(error.error.Message);
       }
     });

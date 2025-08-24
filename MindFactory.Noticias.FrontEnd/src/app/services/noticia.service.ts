@@ -11,8 +11,7 @@ import { environment } from '../../environments/environment';
   providedIn: 'root'
 })
 export class NoticiaService {
-  private apiUrl = `${environment.apiUrl}/noticias`; // Cambiá por tu URL real
-
+  private apiUrl = `${environment.apiUrl}/noticias`; 
   constructor(private http: HttpClient) {}
 
   getAll(pageIndex: number = 1, pageSize: number = 10): Observable<PagedResult<NoticiaDto>> {
