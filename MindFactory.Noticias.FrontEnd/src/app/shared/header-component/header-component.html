@@ -1,4 +1,16 @@
 <header class="header">
-  <h1 class="title">Noticias</h1>
-  </header>
+  <h1 class="title" (click)="irNoticias()" >Noticias</h1>
+  <div class="header-actions">
+    <button  class="btn-nueva-noticia" (click)="abrirPopup()">
+      {{ isEditMode ? 'Editar Noticia' : 'Nueva Noticia' }}
+    </button>
+  </div>
+</header>
+
+ <app-noticia-form-popup
+  *ngIf="showPopup"
+  [noticia]="noticiaParaEditar"
+  (close)="cerrarPopup()"
+  (saveSuccess)="onSaveSuccess($event)">
+</app-noticia-form-popup>
 

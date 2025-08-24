@@ -26,7 +26,6 @@ export class NoticiaPageComponent implements OnInit{
   ngOnInit(): void {
     this.route.paramMap.subscribe(params => {
     const id = Number(params.get('id'));
-    console.log('ID capturado:', id);
 
     if (!id) {
       this.router.navigate(['/noticias']);
@@ -44,7 +43,6 @@ export class NoticiaPageComponent implements OnInit{
         this.router.navigate(['/noticias']);
       } else {
         this.noticiaActual = data;
-        console.log('Noticia actual asignada:', this.noticiaActual);
         this.cargarNoticiasRelacionadas(this.noticiaActual.categoriaId, this.noticiaActual.id);
 
       }

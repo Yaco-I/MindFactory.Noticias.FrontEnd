@@ -1,26 +1,85 @@
-import { Component } from '@angular/core';
-import { MatButtonModule } from '@angular/material/button';
-import { MatDialog, MatDialogModule } from '@angular/material/dialog';
+import { ChangeDetectorRef, Component, OnDestroy, OnInit } from '@angular/core';
+import { ActivatedRoute, NavigationEnd, Router } from '@angular/router';
+import { Subscription } from 'rxjs';
+import { filter } from 'rxjs/operators';
+import { NoticiaDto } from '../../models/noticias/noticia-dto';
+import { NoticiaService } from '../../services/noticia.service';
+import { NotificacionService } from '../../services/notificacion.service';
+import { CommonModule } from '@angular/common';
+import { NoticiaFormPopupComponent } from '../components/noticia-form-popup/noticia-form-popup';
 
 @Component({
   selector: 'app-header',
-  imports: [MatButtonModule,MatDialogModule],
+  standalone: true,
+  imports: [CommonModule, NoticiaFormPopupComponent],
   templateUrl: './header-component.html',
-  styleUrl: './header-component.css'
+  styleUrls: ['./header-component.css']
 })
-export class HeaderComponent {
+export class HeaderComponent implements OnInit, OnDestroy {
+  showButton = false;
+  isEditMode = false;
+  showPopup = false;
+  noticiaParaEditar: NoticiaDto | null = null;
+  noticiaId: number | null = null;
 
-  
-  // constructor(public dialog: MatDialog) {}
+  private routerSubscription: Subscription;
 
-  //   abrirPopup(): void {
-  //   const dialogRef = this.dialog.open(PopupContent, {
-  //     width: '250px' // Puedes ajustar el ancho del popup
-  //   });
+  constructor(
+    private router: Router,
+    private activatedRoute: ActivatedRoute,
+    private noticiaService: NoticiaService,
+    private notificacionService: NotificacionService,
+    private cdr: ChangeDetectorRef
+  ) {
+    this.routerSubscription = new Subscription();
+  }
 
-  //   dialogRef.afterClosed().subscribe(result => {
-  //     console.log('El diálogo se cerró');
-  //     // Aquí puedes realizar alguna acción después de que se cierre el popup
-  //   });
-  // }
+  ngOnInit(): void {
+    this.routerSubscription = this.router.events.pipe(
+      filter(event => event instanceof NavigationEnd)
+    ).subscribe(() => {
+      const currentRoute = this.router.url;
+
+      const partes = currentRoute.split('/');
+      this.noticiaId = partes.length > 2 ? +partes[2] : null;
+
+      this.isEditMode = !!this.noticiaId;
+      
+      
+    });
+  }
+
+  ngOnDestroy(): void {
+    this.routerSubscription.unsubscribe();
+  }
+
+  abrirPopup(): void {
+    if (this.isEditMode) {
+      if (this.noticiaId) {
+        this.noticiaService.getById(this.noticiaId).subscribe(noticia => {
+          this.noticiaParaEditar = noticia;
+          this.showPopup = true;
+          this.cdr.detectChanges();
+        });
+      }
+    } else {
+      this.noticiaParaEditar = null;
+      this.showPopup = true;
+    }
+  }
+
+  cerrarPopup(): void {
+    this.showPopup = false;
+    this.noticiaParaEditar = null;
+  }
+
+  onSaveSuccess(noticia: NoticiaDto): void {
+    this.notificacionService.success(`Noticia "${noticia.titulo}" guardada con éxito.`);
+    this.router.navigate(['/noticias']);
+  }
+
+  irNoticias(){
+   this.router.navigate(['/noticias']);
+  }
+
 }

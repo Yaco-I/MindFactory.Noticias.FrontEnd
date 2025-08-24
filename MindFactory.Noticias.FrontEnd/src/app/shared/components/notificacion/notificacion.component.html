@@ -1,0 +1,4 @@
+<div *ngIf="notificacion" class="notificacion-container" [ngClass]="{ 'success': notificacion.type === 'success', 'error': notificacion.type === 'error' }">
+  <span>{{ notificacion.message }}</span>
+  <button class="close-btn" (click)="clearAlert()">x</button>
+</div> 

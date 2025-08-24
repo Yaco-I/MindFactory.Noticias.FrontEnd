@@ -62,9 +62,7 @@
   padding-bottom: 0.5rem;
 }
 
-/* --- Media Queries para Responsividad --- */
 
-/* Tablet y Desktop pequeño */
 @media (min-width: 768px) {
   .titulo-categoria {
     flex-direction: row;
@@ -77,7 +75,7 @@
   }
 }
 
-/* Móvil */
+
 @media (max-width: 767px) {
   .noticia-container {
     margin-top: 1rem;

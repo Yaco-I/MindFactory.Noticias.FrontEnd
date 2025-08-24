@@ -24,7 +24,6 @@ export class NoticiaService {
   }
 
   getById(id: number): Observable<NoticiaDto | null> {
-   console.log("prueba 1 ");
     return this.http.get<NoticiaDto>(`${this.apiUrl}/${id}`).pipe(
       map(noticia => noticia ?? null)
     );

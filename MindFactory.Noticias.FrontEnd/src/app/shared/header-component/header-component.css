@@ -13,3 +13,34 @@
   font-size: 1.5rem;
   margin: 0;
 }
+
+.header-actions {
+  display: flex;
+  align-items: center;
+}
+
+.btn-nueva-noticia {
+  background-color: #007bff;
+  color: white;
+  border: none;
+  padding: 0.6rem 1.2rem;
+  border-radius: 5px;
+  cursor: pointer;
+  font-size: 1rem;
+  transition: background-color 0.3s ease;
+}
+
+.btn-nueva-noticia:hover {
+  background-color: #0056b3;
+}
+
+/* Responsive */
+@media (max-width: 768px) {
+  .title {
+    font-size: 1.2rem;
+  }
+  .btn-nueva-noticia {
+    padding: 0.5rem 0.8rem;
+    font-size: 0.9rem;
+  }
+}
